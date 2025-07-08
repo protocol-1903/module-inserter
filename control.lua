@@ -1,3 +1,12 @@
+target_inventory_types = {
+  ["furnace"] = defines.inventory.crafter_modules,
+  ["assembling-machine"] = defines.inventory.crafter_modules,
+  ["lab"] = defines.inventory.lab_modules,
+  ["mining-drill"] = defines.inventory.mining_drill_modules,
+  ["beacon"] = defines.inventory.beacon_modules,
+  ["proxy-container"] = ":D"
+}
+
 local function valid(inserter)
   metadata = storage[inserter.unit_number]
   -- if not valid, then remove entities (will most always be inserters being invalid)
@@ -33,6 +42,13 @@ local function update_targets(inserter)
             "mining-drill"
           }
         }[1]
+
+        if target and target.type == "assembling-machine" and target.name:sub(-7) == "-source" then
+          target = entity.surface.find_entities_filtered{
+            position = target.position,
+            name = target.name:sub(1,-8)
+          }[1]
+        end
 
         -- set new target, will automatically fail if target does not exist
         entity.proxy_target_entity = target
@@ -83,14 +99,6 @@ end
 script.on_event(defines.events.on_gui_opened, function (event)
   update_gui(event.entity, game.players[event.player_index])
 end)
-
-target_inventory_types = {
-  ["furnace"] = defines.inventory.crafter_modules,
-  ["assembling-machine"] = defines.inventory.crafter_modules,
-  ["lab"] = defines.inventory.lab_modules,
-  ["mining-drill"] = defines.inventory.mining_drill_modules,
-  ["proxy-container"] = ":D"
-}
 
 script.on_event(defines.events.on_gui_click, function (event)
   if event.element.get_mod() ~= "module-inserter" or event.element.type ~= "checkbox" then return end
