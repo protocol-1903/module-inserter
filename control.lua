@@ -7,23 +7,23 @@ target_inventory_types = {
   ["proxy-container"] = ":D"
 }
 
-local function valid(inserter)
-  metadata = storage[inserter.unit_number]
+local function valid(metadata_index)
+  metadata = storage[metadata_index]
   -- if not valid, then remove entities (will most always be inserters being invalid)
   if not metadata then return true end
   if not metadata.inserter.valid or (metadata.pickup_target and not metadata.pickup_target.valid) or (metadata.drop_target and not metadata.drop_target.valid) then
     if metadata.inserter.valid then metadata.inserter.destroy() end
     if metadata.pickup_target.valid then metadata.pickup_target.destroy() end
     if metadata.drop_target.valid then metadata.drop_target.destroy() end
-    storage[index] = nil
+    storage[metadata_index] = nil
     return false
   end
   return true
 end
 
 script.on_configuration_changed(function (event)
-  for _, metadata in pairs(storage) do
-    valid(metadata.inserter)
+  for index in pairs(storage) do
+    valid(index)
   end
 end)
 
@@ -61,7 +61,7 @@ end
 
 local function update_gui(inserter, player)
   if not inserter or inserter.type ~= "inserter" then return end
-  if not valid(inserter) then return end
+  if not valid(inserter.unit_number) then return end
   if player.gui.relative["module-inserter-gui"] then
     player.gui.relative["module-inserter-gui"].destroy()
   end
