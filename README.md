@@ -3,6 +3,6 @@
 This mod allows inserters to interact with the module slots of normally inaccessible entities. Notably, crafting machines and labs. This allows you to change your setups on a whim, or when used in combination with certain other mods, allows for new pathways for production...
 Please report any bugs here or on [github](https://github.com/protocol-1903/module-inserter)
 
-Thumbnail created by Buttpie
+Thumbnail created by Carolina
 
 If you have a mod idea, let me know and I can look into it.
