@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 2026-02-05
+  Bugfixes:
+    - Fixed a rare crash with validity checks. Resolves https://github.com/protocol-1903/module-inserter/issues/1
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2026-02-01
   Changes:

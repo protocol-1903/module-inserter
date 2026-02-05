@@ -1,6 +1,6 @@
 {
   "name": "module-inserter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "title": "Module Inserter",
   "description": "Allows inserters to interact with normally inaccessible module slots, such as those in crafting machines and labs.",
   "author": "protocol_1903",

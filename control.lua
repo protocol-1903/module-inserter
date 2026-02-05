@@ -13,8 +13,8 @@ local function valid(metadata_index)
   if not metadata then return true end
   if not metadata.inserter.valid or (metadata.pickup_target and not metadata.pickup_target.valid) or (metadata.drop_target and not metadata.drop_target.valid) then
     if metadata.inserter.valid then metadata.inserter.destroy() end
-    if metadata.pickup_target.valid then metadata.pickup_target.destroy() end
-    if metadata.drop_target.valid then metadata.drop_target.destroy() end
+    if metadata.pickup_target and metadata.pickup_target.valid then metadata.pickup_target.destroy() end
+    if metadata.drop_target and metadata.drop_target.valid then metadata.drop_target.destroy() end
     storage[metadata_index] = nil
     return false
   end
