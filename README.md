@@ -4,4 +4,5 @@ This mod allows inserters to interact with the module slots of normally inaccess
 
 Thumbnail created by Carolina
 
+My mods are made 100% by humans, with no AI code or graphics.
 If you have a mod idea, let me know and I can look into it.
